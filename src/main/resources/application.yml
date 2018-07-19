@@ -1,3 +1,16 @@
 server:
   port: 8080
-
+debug: true
+spring:
+  application:
+    name: CloudClient
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        register: true
+        healthCheckInterval: 15s
+        serviceName: CloudClient
+        healthCheckPath: /actuator/health
+        tags: urlprefix-/${spring.application.name}
